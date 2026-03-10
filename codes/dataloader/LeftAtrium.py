@@ -146,8 +146,8 @@ class ToTensor(object):
 
 
 if __name__ == '__main__':
-    data_dir = '/mnt/Codes/kella/DST/Data/LA'
-    list_dir = '/mnt/Codes/kella/DST/code/MPCL_UPCoL/datalist/LA'
+    data_dir = '../Data/LA'
+    list_dir = ../datalist/LA'
     labset = LAHeart(data_dir, list_dir,split='lab')
     unlabset = LAHeart(data_dir,list_dir,split='unlab')
     trainset = LAHeart(data_dir,list_dir,split='train')
@@ -158,7 +158,6 @@ if __name__ == '__main__':
     train_sample = trainset[0] 
     test_sample = testset[0]
     print(torch.max(lab_sample['image']), torch.min(lab_sample['image']))
-    PRINT
     
     print(len(labset), lab_sample['image'].shape, lab_sample['label'].shape)  # 16 torch.Size([1, 112, 112, 80]) torch.Size([112, 112, 80])
     print(len(unlabset), unlab_sample['image'].shape, unlab_sample['label'].shape) # 64 torch.Size([1, 112, 112, 80]) torch.Size([112, 112, 80])

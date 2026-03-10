@@ -34,7 +34,6 @@ def test_all_case(net, image_list, num_classes, patch_size=(112, 112, 80), strid
         csv_path = os.path.join(test_save_path, 'metrics.csv')
         csv_file = open(csv_path, 'w', newline='')
         csv_writer = csv.writer(csv_file)
-        # 写入表头
         csv_writer.writerow(['Case_Number', 'Dice', 'Jaccard', 'HD95', 'ASD'])
 
     total_num = len(image_list)
@@ -99,25 +98,22 @@ def test_all_case(net, image_list, num_classes, patch_size=(112, 112, 80), strid
     std_metric = [dice_std, jc_std, hd95_std, assd_std]
 
     if print_result:
-        # 写入平均值
         csv_writer.writerow([
-            'Mean',  # 第一列标识这是平均值
-            dice_mean,  # Dice平均值
-            jc_mean,    # Jaccard平均值
-            hd95_mean,  # HD95平均值
-            assd_mean   # ASD平均值
+            'Mean', 
+            dice_mean,
+            jc_mean,
+            hd95_mean,
+            assd_mean
         ])
 
-        # 写入标准差
         csv_writer.writerow([
-            'Std',    # 第一列标识这是标准差
-            dice_std, # Dice标准差
-            jc_std,   # Jaccard标准差
-            hd95_std, # HD95标准差
-            assd_std  # ASD标准差
+            'Std',    
+            dice_std, 
+            jc_std,  
+            hd95_std, 
+            assd_std 
         ])
 
-        # 关闭CSV文件
         csv_file.close()
     return avg_metric, std_metric
 
